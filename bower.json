@@ -1,0 +1,29 @@
+{
+  "name": "bonus-seed",
+  "version": "0.0.0",
+  "homepage": "https://github.com/marcelobns/bonus-seed",
+  "authors": [
+    "marcelobns <marcelobns@live.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "bootstrap",
+    "bonus",
+    "suit-up"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "font-awesome": "fontawesome#~4.4.0"
+  }
+}
