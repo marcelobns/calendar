@@ -5,7 +5,8 @@
 namespace Anotherwise\Bonus;
 
 class Database {
-    public static function connection($schema = 'default'){
+    public static $schema = 'default';
+    public static function connection(){
         $connections = array(
             'default' => array(
                 'driver'    => 'mysql',
