@@ -1,13 +1,17 @@
-CakePHP 3
+# Bonus Project Seed
 
-/vendor/*
-/config/app.php
-/tmp/*
-/logs/*
+/.imdone
+/vendor
+.env.*.php
+.env.php
+.env
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
 
-CakePHP 2
-
-/app/tmp/*
-/app/Config/core.php
-/app/Config/database.php
-/vendors/*
+Icon?
+ehthumbs.db
+Thumbs.db
+composer.lock
+npm-debug.log
