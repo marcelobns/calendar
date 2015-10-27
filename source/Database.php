@@ -5,13 +5,12 @@
 namespace Anotherwise\Bonus;
 
 class Database {
-    public static $schema = 'default';
-    public static function connection(){
+    public static function connection($schema = 'default'){
         $connections = array(
             'default' => array(
                 'driver'    => 'mysql',
                 'host'      => 'localhost',
-                'database'  => 'bonus',
+                'database'  => 'classelivre',
                 'username'  => 'root',
                 'password'  => '',
                 'charset'   => 'utf8',
@@ -21,7 +20,7 @@ class Database {
             'test' => array(
                 'driver'    => 'mysql',
                 'host'      => 'localhost',
-                'database'  => 'bonus',
+                'database'  => 'classelivre',
                 'username'  => 'root',
                 'password'  => '',
                 'charset'   => 'utf8',
