@@ -24,5 +24,4 @@
     <p>
         <a>Login</a><br>
         <a>CRUD</a>
-    </a>
 </article>
