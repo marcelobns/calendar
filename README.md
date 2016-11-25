@@ -1,1 +1,2 @@
 # bonus-seed
+$ composer install
