@@ -9,7 +9,7 @@
         The documentation and the seed project, you can download from <a href="#">here!</a>
     </p>
     <p>
-        This project uses a third party persitence layer that you can find more information at <a href="http://laravel.com/docs/master/eloquent">Eloquent docs</a>.
+        This project uses a third party persitence layer that you can find more information at <a href="http://laravel.com/docs/master/eloquent" target="_blank">Eloquent docs</a>.
     </p>
     <h3>Why you should use PHP Bonus Framework?</h3>
     <p>

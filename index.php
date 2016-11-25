@@ -21,6 +21,11 @@ define('WEBROOT', HREF . $res . DS);
 define('MODULES', "\\$src\\$modules\\");
 
 //Autoloader
+if (!file_exists(VENDOR."autoload.php")) {
+	echo "<h3>Vendor files does not exists<h3>";
+	echo "<h4>$ composer install<h4>";
+	throw new Exception ('Vendor files does not exists (composer)');
+}
 require_once VENDOR."autoload.php";
 //Routes
 new Anotherwise\Bonus\Router();
