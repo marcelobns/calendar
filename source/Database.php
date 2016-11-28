@@ -10,7 +10,7 @@ class Database {
             'default' => array(
                 'driver'    => 'mysql',
                 'host'      => 'localhost',
-                'database'  => 'classelivre',
+                'database'  => 'calendar',
                 'username'  => 'root',
                 'password'  => '',
                 'charset'   => 'utf8',

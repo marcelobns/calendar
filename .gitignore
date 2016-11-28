@@ -3,6 +3,7 @@
 /.imdone
 /vendor
 /node_modules
+/bower_components
 .env.*.php
 .env.php
 .env
@@ -16,3 +17,7 @@ ehthumbs.db
 Thumbs.db
 composer.lock
 npm-debug.log
+
+# for production
+/source/Database.php
+/source/Routes.php
