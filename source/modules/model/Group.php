@@ -5,8 +5,8 @@
 */
 namespace source\modules\model;
 
-class User extends \Anotherwise\Bonus\Model{
+class Group extends \Anotherwise\Bonus\Model{
 
-    protected $table = "users";
+    protected $table = "groups";
     protected $guarded = array();    
 }

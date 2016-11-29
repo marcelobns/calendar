@@ -4,7 +4,7 @@
 */
 namespace Source\Modules;
 
-class Errors extends \Anotherwise\Bonus\Controller {
+class Errors extends AppController {
     function error404(){
         echo "Error 404!";
     }
