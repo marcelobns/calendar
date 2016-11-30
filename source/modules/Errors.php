@@ -6,9 +6,11 @@ namespace Source\Modules;
 
 class Errors extends AppController {
     function error404(){
-        echo "Error 404!";
+        echo "<h1>Error 404!</h1>";
+        echo "Page not found";
     }
     function error403(){
-        echo "Error 403!";
+        echo "<h1>Error 403!</h1>";
+        echo "Forbidden Access";
     }
 }

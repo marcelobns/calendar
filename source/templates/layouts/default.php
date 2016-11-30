@@ -3,22 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" type="image/png" href="public/img/favicon.png"/>
     <title><?=@$this->title?></title>
     <?=$this->css('bootstrap.min')?>
-    <?=$this->css('bonus')?>
+    <?=$this->css('calendar')?>
 </head>
 <body>
-    <header class="default-header">
-
-    </header>
-    <main class="container">
+    <main class="container-fluid">
         <?php require($this->template) ?>
     </main>
-    <footer class="default-footer">
-
-    </footer>
-    <?=$this->js('jquery.min')?>
-    <?=$this->js('bootstrap.min')?>
+    <!-- <?=$this->js('jquery.min')?> -->
     <?=$this->script()?>
 </body>
 </html>

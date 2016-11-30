@@ -9,7 +9,7 @@ class Database {
         $connections = array(
             'default' => array(
                 'driver'    => 'mysql',
-                'host'      => 'localhost',
+                'host'      => 'localhost:3307',
                 'database'  => 'calendar',
                 'username'  => 'root',
                 'password'  => '',
