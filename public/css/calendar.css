@@ -1,64 +1,80 @@
 /*https://responsivedesign.is/patterns/calendar*/
+.calendar {
+    overflow: hidden;
+}
+.calendar a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+}
 .calendar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 100%;
 }
-.month {
-    padding: 30px 25px;
+.calendar li {
+    display: block;
+    float: left;
+    padding: 5px;
+    box-sizing:border-box;
+    margin-right: -1px;
+    margin-bottom: -1px;
+}
+.calendar-header {
+    overflow: hidden;
+    padding: 25px 15px;
     background: #3498db;
-}
-.selected-month {
-    text-align: center;
-}
-.month ul li {
     color: rgba(255,255,255, 0.75);
     font-size: 22px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 3px;
+    text-align: center;
 }
-.month a {
-    text-decoration: none;
-    color: rgba(255,255,255, 0.75);
+.calendar-header li {
+    width: 33.33%
 }
-.month a:hover {
+.calendar-body {
+    overflow: hidden;
+    background: #eee;
+}
+.calendar-body li{
+    width:14.37%;
+}
+.calendar-body .weekdays {
+    overflow: hidden;
+    background-color:#ddd;
+}
+.calendar-body ul.weekdays li {
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 20px;
+    padding: 10px 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #777;
+}
+.calendar-body .days {
+    overflow: hidden;
+    padding: 3px;
+}
+.calendar-body .days li {
+    border: 1px solid #fff;
+    padding-bottom: 10%;
+    font-size: 12px;
+}
+.calendar-body .days li:hover {
+    background-color: #ddd;
+}
+.calendar-header a:hover {
     text-decoration: none;
     color: #fff;
 }
-
-.month .prev {
-    float: left;
+.calendar-header .prev {
+    text-align: left;
 }
-.month .next {
-    float: right;
-}
-.weekdays {
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    background-color:#ddd;
-}
-.weekdays li {
-    display: inline-block;
-    width: 12.8%;
-    color: #777;
-    text-align: center;
-}
-.days {
-    padding-left: 5px;
-    background: #eee;
-}
-.days li {
-    text-align: right;
-    display: inline-block;
-    width: 12.8%;
-    font-size:11px;
-    color:#666;
-    padding-bottom: 10%;
-    outline: 1px solid #fff;
+.calendar-header .next {
+    text-align: right;;
 }
 .days .today {
     color: red;
@@ -75,4 +91,23 @@
     height: 15px;
     width: 15px;
     border-radius: 100%;
+}
+.days .btn-add {
+    display: inline-block;
+    background-color: rgba(255,255,255, 0.3);
+    color: rgba(0,0,0, 0.3);
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 100%;
+}
+.days .btn-add:hover {
+    background-color: rgba(255,255,255, 0.8);
+    color: rgba(0,0,0, 0.8);
+}
+.modal-content {
+    border-radius: 2px;
+}
+.text-center {
+    text-align: center;
 }

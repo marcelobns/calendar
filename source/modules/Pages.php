@@ -6,8 +6,8 @@ namespace Source\Modules;
 
 class Pages extends AppController {
 
-    function index() {
-        $month = '2016-11';
+    function index($month = null) {
+        $month = $month == null ? date('Y-m') : $month;
         $first_day = date('w',strtotime("$month-01"));
         $last_day = date('t',strtotime($month));
         $this->view->days = [];
@@ -23,16 +23,8 @@ class Pages extends AppController {
         $this->view->data['groups'] = model\Group::orderBy("name")->get();
         //TODO sanitize parameters
         $this->view->data['livres'] = model\Place::whereRaw("id not in (SELECT place_id FROM schedules
-				                                              WHERE EXTRACT(YEAR_MONTH FROM datetime) = '201611')")->get();
+				                                                        WHERE EXTRACT(YEAR_MONTH FROM day) = '201611')")->orderBy("name")->get();
 
         $this->render('pages/index', 'default');
-    }
-    function schedules($begin = null){
-        if(!$begin) {
-            $this->view->data['schedules'] = model\Schedule::orderBy('datetime')->get();
-        } else {
-            //TODO utilizar parametro para a consulta
-            $this->view->data['schedules'] = model\Schedule::orderBy('datetime')->get();
-        }
     }
 }

@@ -22,8 +22,8 @@ class Routes {
             //launcher
             "" => true,
             //custom authorizations
-            "page/{name}" => true,
-            "post/{title}" => true,
+            "pages/{name}" => true,
+            "posts/{title}" => true,
             "register" => true,
             "login" => true,
 
@@ -33,6 +33,8 @@ class Routes {
             "dashboard/group/add" => true,
             "dashboard/group/edit/{id}" => true,
             "dashboard/group/delete/{id}" => true,
+
+            "schedules/add/{day}/{group}" => true,
         );
     }
 }
