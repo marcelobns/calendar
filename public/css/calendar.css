@@ -38,7 +38,7 @@
     overflow: hidden;
     background: #eee;
 }
-.calendar-body li{
+.calendar-body .days > li, .calendar-body .weekdays > li{
     width:14.37%;
 }
 .calendar-body .weekdays {
@@ -58,10 +58,11 @@
     overflow: hidden;
     padding: 3px;
 }
-.calendar-body .days li {
+.calendar-body .days > li {
+    overflow: hidden;
     border: 1px solid #fff;
-    padding-bottom: 10%;
-    font-size: 12px;
+    padding-bottom: 1%;
+    font-size: 13px;
 }
 .calendar-body .days li:hover {
     background-color: #ddd;
@@ -94,20 +95,50 @@
 }
 .days .btn-add {
     display: inline-block;
-    background-color: rgba(255,255,255, 0.3);
-    color: rgba(0,0,0, 0.3);
+    background-color: rgba(255,255,255, 0.2);
+    color: rgba(0,0,0, 0.33);
     height: 20px;
     width: 20px;
     text-align: center;
     border-radius: 100%;
+    padding: 0px;
 }
 .days .btn-add:hover {
     background-color: rgba(255,255,255, 0.8);
     color: rgba(0,0,0, 0.8);
 }
-.modal-content {
-    border-radius: 2px;
-}
 .text-center {
     text-align: center;
+}
+.btn-save {
+    background-color: #e74c3c;
+    color: rgba(255,255,255, 0.9);
+    border-radius: 100%;
+    font-size: 36px;
+    font-weight: 500;
+    padding-top: 1px;
+    box-shadow: 1px 2px 4px rgba(0,0,0, 0.4);
+}
+.schedules {
+    overflow-y: auto;
+    height: 100px;
+}
+.event {
+    font-size: 11px;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.75);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    margin: 3px 0px;
+}
+.table td, .table th {
+    border: none;
+}
+.modal-header{
+    background: #3498db;
+    color: rgba(255,255,255, 0.75);
+}
+.modal-content {
+    border: none;
 }

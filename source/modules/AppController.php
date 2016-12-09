@@ -9,6 +9,11 @@ class AppController extends \Anotherwise\Bonus\Controller{
         parent::__construct();
         date_default_timezone_set('America/Boa_Vista');
 
-        $this->view->title = "Salas - DERCA";        
+        $this->view->title = "Salas - DERCA";
+    }
+    function dump($object){
+        echo "<pre>";
+        var_dump($object);
+        echo "</pre>";
     }
 }

@@ -8,7 +8,7 @@ class Routes {
     public static function map(){
         return array(
             //launcher
-            "/^$/" => array("controller"=>"Pages","action"=>"index"),
+            "/^$/" => array("controller"=>"Pages","action"=>"date"),
             //generic route
             "/^[a-zA-Z0-9\_\-]/i" => array("controller"=>0, "action"=>1,"param"=>array()),
             //custom routes
@@ -35,6 +35,8 @@ class Routes {
             "dashboard/group/delete/{id}" => true,
 
             "schedules/add/{day}/{group}" => true,
+            "schedules/edit/{id}" => true,
+            "schedules/delete" => true,
         );
     }
 }

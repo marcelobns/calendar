@@ -13,8 +13,8 @@
         <?php require($this->template) ?>
     </main>
     <?=$this->js('jquery.min')?>
+    <?=$this->js('jquery.inputmask.bundle')?>
     <?=$this->js('bootstrap.min')?>
-    <?=$this->js('inputmask.min')?>
     <?=$this->script()?>
 </body>
 </html>
