@@ -27,16 +27,10 @@ class Routes {
             "register" => true,
             "login" => true,
 
-            //Temporary
-            "dashboard" => true,
-            "dashboard/group" => true,
-            "dashboard/group/add" => true,
-            "dashboard/group/edit/{id}" => true,
-            "dashboard/group/delete/{id}" => true,
-
             "schedules/add/{day}/{group}" => true,
             "schedules/edit/{id}" => true,
             "schedules/delete" => true,
+            "schedules/check/{place_id}/{dayS}/{dayE}/{hourS}/{hourE}" => true,
         );
     }
 }

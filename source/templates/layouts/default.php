@@ -14,7 +14,9 @@
     </main>
     <?=$this->js('jquery.min')?>
     <?=$this->js('jquery.inputmask.bundle')?>
+    <?=$this->js('tether.min')?>
     <?=$this->js('bootstrap.min')?>
+    <?=$this->js('moment')?>
     <?=$this->script()?>
 </body>
 </html>
