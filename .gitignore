@@ -1,4 +1,4 @@
-# Bonus Project Seed
+# Project Seed
 
 /.imdone
 /vendor
@@ -17,7 +17,3 @@ ehthumbs.db
 Thumbs.db
 composer.lock
 npm-debug.log
-
-# for production
-/source/Database.php
-#/source/Routes.php

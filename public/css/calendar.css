@@ -23,7 +23,7 @@
 .calendar-header {
     overflow: hidden;
     padding: 25px 15px;
-    background: #3498db;
+    background-color: #3498db;
     color: rgba(255,255,255, 0.75);
     font-size: 22px;
     font-weight: 600;
@@ -150,4 +150,106 @@
 }
 .wrapper {
     padding-top: 25px;
+}
+.form-login,
+.form-register {
+    overflow: hidden;
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    margin-top: 60px;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
+}
+.form-login .username {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.form-login .password {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.register-link {
+    text-align: right;
+}
+.alert {
+    display: none;
+}
+.error-page {
+    margin-top: 30px;
+    padding: 30px;
+}
+.error-page h1 {
+    font-size: 8rem;
+}
+.error-page h3 {
+    font-size: 2.2rem;
+    font-weight: 200;
+}
+.calendar-index {
+    width: 100%;
+    max-width: 640px;
+    margin: auto;
+    margin-top: 15px;
+}
+.calendar-nav {
+    background-color: #3498db;
+    padding: 5px;
+}
+.schedule {
+    padding: 5px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+.schedule .day {
+    color: rgba(0, 0, 0, 0.5);
+}
+.schedule .name {
+    color: rgba(0, 0, 0, 0.85);
+}
+.schedule .details {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+}
+.btn-gerenciar {
+    position: absolute;
+    margin-top: -15px;
+    z-index: 999;
+}
+.btn-gerenciar .btn {
+    width: 48px;
+    height: 48px;
+    padding: 7px;
+    border-radius: 100%!important;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.85);
+}
+.index h2 {
+    margin: 15px auto;
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 200;
+}
+.navbar-brand {
+    font-weight: 200;
+}
+.sala-color {
+    display: inline-block;
+    width:14px;
+    height:14px;
+    border-radius: 3px;
+}
+.text-head {
+    font-weight: 200;
+    text-align: center;
+}
+.text-ancor-head {
+    font-weight: 200;
+}
+.calendar-body .weekhour > li {
+    padding-bottom: 15%;
+}
+.events {
+    overflow-y: auto;
+    height: 200px;
 }
