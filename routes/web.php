@@ -24,3 +24,9 @@ Route::get('dashboard/places', 'PlaceController@index');
 Route::get('place/{id?}', 'PlaceController@form')->where('id', '[0-9]+');
 Route::post('place/save', 'PlaceController@save');
 Route::delete('place/delete', 'PlaceController@delete');
+
+Route::get('dashboard/users', 'UserController@index');
+Route::get('user/{id?}', 'UserController@form')->where('id', '[0-9]+');
+Route::post('user/save', 'UserController@save');
+Route::post('user/reset', 'UserController@reset');
+Route::delete('user/delete', 'UserController@delete');

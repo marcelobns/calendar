@@ -72,7 +72,7 @@
 @push('script')
 <script type="text/javascript">
     $('#PageGroupId').on('change', function(e){
-        window.location.href = "{{url('dashboard').'/'.$month}}/" + this.value;
+        window.location.href = "<?=url('dashboard').'/'.$month?>/" + this.value;
     });
     $('#modal_frame').on('show.bs.modal', function(e) {
         $(this).find('.modal-content').load($(e.relatedTarget).attr('href')+'/'+$('#PageGroupId').val());
