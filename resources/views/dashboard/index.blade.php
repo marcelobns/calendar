@@ -34,12 +34,12 @@
                         <?php $full_day = $month."-".str_pad($day, 2, "0", STR_PAD_LEFT); ?>
                         <li <?= ($today == $full_day ? "class='today'" : "") ?>>
                             <?= ($day<=0? "." : $day) ?>
-                            <a href="/schedule/add/<?=$full_day?>" class="btn-add hidden-xs-down" data-toggle="modal" data-target="#modal_frame">+</a>
+                            <a href="{{url("schedule/add/$full_day")}}" class="btn-add hidden-xs-down" data-toggle="modal" data-target="#modal_frame">+</a>
                             <ul class="schedules">
                                 <?php foreach ($schedules as $i=>$schedule) : ?>
                                     <li class="event" style="background-color:<?=$schedule->place->color?>">
                                         <?php $id=$schedule->id?>
-                                        <a href="/schedule/edit/<?=$schedule->id?>" data-toggle="modal" data-target="#modal_frame" title="<?=$schedule->name?>">
+                                        <a href="{{url("schedule/edit/{$schedule->id}")}}" data-toggle="modal" data-target="#modal_frame" title="<?=$schedule->name?>">
                                             <?=date('H:i', strtotime($schedule->hour_start)).' '.$schedule->name?>
                                         </a>
                                     </li>

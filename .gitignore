@@ -6,10 +6,12 @@
 /bower_components
 .env.php
 .env
+.env.production
 .DS_Store
 .DS_Store?
 .Spotlight-V100
 .Trashes
+.remote-sync.json
 
 Icon?
 ehthumbs.db

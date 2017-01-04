@@ -28,7 +28,7 @@
                             @foreach ($schedules as $key=>$schedule)
                                 <li class="event" style="background-color:<?=$schedule->place->color?>">
                                     <?php $id=$schedule->id ?>
-                                    <a href="/schedule/edit/<?=$schedule->id?>" data-toggle="modal" data-target="#modal_frame" title="<?=$schedule->name?>">
+                                    <a href="{{url("schedule/edit/{$schedule->id}")}}" data-toggle="modal" data-target="#modal_frame" title="<?=$schedule->name?>">
                                         <?=date('H:i', strtotime($schedule->hour_start)).' '.$schedule->name?>
                                     </a>
                                 </li>

@@ -8,9 +8,9 @@
 
     <title>Calendário de Salas | DERCA</title>
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/calendar.css">
+    <link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/calendar.css')}}">
     @stack('link')
 </head>
 <body>
@@ -28,7 +28,7 @@
                         </li>
                     @else
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Arquivo</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Arquivo</a>
                             <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
                                 <a class="dropdown-item" href="{{url('/')}}">Próximos Eventos</a>
                                 <?php $month = date('Y-m')?>
@@ -54,10 +54,7 @@
                         </li>
                     @endif
                 </div>
-            </ul>
-            <div class="nav navbar-nav">
-
-            </div>
+            </ul>            
         </nav>
     @show
 
@@ -67,12 +64,12 @@
 
     @show
 
-    <script charset="utf-8" src="/js/jquery.min.js" ></script>
-    <script charset="utf-8" src="/js/jquery.inputmask.bundle.js" ></script>
-    <script charset="utf-8" src="/js/tether.min.js" ></script>
-    <script charset="utf-8" src="/js/bootstrap.min.js" ></script>
-    <script charset="utf-8" src="/js/moment.js" ></script>
-    <script charset="utf-8" src="/js/app.js" ></script>
+    <script charset="utf-8" src="{{asset('public/js/jquery.min.js')}}" ></script>
+    <script charset="utf-8" src="{{asset('public/js/jquery.inputmask.bundle.js')}}" ></script>
+    <script charset="utf-8" src="{{asset('public/js/tether.min.js')}}" ></script>
+    <script charset="utf-8" src="{{asset('public/js/bootstrap.min.js')}}" ></script>
+    <script charset="utf-8" src="{{asset('public/js/moment.js')}}" ></script>
+    <script charset="utf-8" src="{{asset('public/js/app.js')}}" ></script>
 
     @stack('script')
 </body>

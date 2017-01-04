@@ -30,7 +30,7 @@ class DashboardController extends AppController {
             $pos = date('d', strtotime($schedule->day))+0;
             array_push($view['days'][$pos], $schedule);
         }
-        $view['salas'] = \App\Place::where("group_id", $group_id)->orderBy("name")->selectRaw("*, (SELECT count(id) FROM calendar.schedules WHERE EXTRACT(YEAR_MONTH FROM day) = '$month_raw' and places.id = place_id) as uso")->get();
+        $view['salas'] = \App\Place::where("group_id", $group_id)->orderBy("name")->selectRaw("*, (SELECT count(id) FROM schedules WHERE EXTRACT(YEAR_MONTH FROM day) = '$month_raw' and places.id = place_id) as uso")->get();
 
         $view['prev'] = url("dashboard/".date('Y-m', strtotime("-1 month", strtotime($month)))."/$group_id" );
         $view['next'] = url("dashboard/".date('Y-m', strtotime("+1 month", strtotime($month)))."/$group_id" );
