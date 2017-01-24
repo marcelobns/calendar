@@ -10,55 +10,63 @@
 
     <link rel="stylesheet" href="{{asset('public/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/css/calendar.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/selectize.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/custom.css')}}">
     @stack('link')
 </head>
 <body>
     @section('before')
-        <nav class="navbar navbar-light bg-faded">
-            <a class="navbar-brand" href="{{ url('/') }}">Calendário de Salas</a>
-            <ul class="nav navbar-nav">
-                <div class="float-xs-right">
+        <div class="navbar navbar-light bg-faded">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-7">
+                        <a class="navbar-brand" href="{{ url('/') }}">Calendário das Salas</a>
+                    </div>
                     @if (Auth::guest())
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/login') }}">Login <i class="fa fa-sign-in"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ url('/register') }}">Register</a> --}}
-                        </li>
+                    <div class="col-sm-4 col-5">
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/login') }}"><i class="fa fa-sign-in fa-lg"></i> Entrar</a>
+                            </li>
+                        </ul>
+                    </div>
                     @else
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Arquivo</a>
-                            <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-                                <a class="dropdown-item" href="{{url('/')}}">Próximos Eventos</a>
-                                <?php $month = date('Y-m')?>
-                                <a class="dropdown-item" href="{{url("dashboard/{$month}/1")}}">Gerenciar Calendário</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{url('dashboard/groups')}}">Blocos</a>
-                                <a class="dropdown-item" href="{{url('dashboard/places')}}">Salas</a>
-                                <a class="dropdown-item" href="{{url('dashboard/users')}}">Usuários</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                {{ Auth::user()->name }}
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                SAIR
-                            </a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
+                    <div class="col-sm-4">
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Arquivo</a>
+                                <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+                                    <a class="dropdown-item" href="{{url("/")}}">Gerenciar Calendário</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{url('dashboard/groups')}}">Blocos</a>
+                                    <a class="dropdown-item" href="{{url('dashboard/places')}}">Salas</a>
+                                    <a class="dropdown-item" href="{{url('dashboard/users')}}">Usuários</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link uppercase" href="#">
+                                    {{ Auth::user()->name }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    SAIR <i class="fa fa-sign-out"></i>
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                     @endif
                 </div>
-            </ul>            
-        </nav>
+            </div>
+        </div>
     @show
 
-    @yield('content')
+    <div class="container wrapper">
+        @yield('content')
+    </div>
 
     @section('after')
 
@@ -69,8 +77,8 @@
     <script charset="utf-8" src="{{asset('public/js/tether.min.js')}}" ></script>
     <script charset="utf-8" src="{{asset('public/js/bootstrap.min.js')}}" ></script>
     <script charset="utf-8" src="{{asset('public/js/moment.js')}}" ></script>
-    <script charset="utf-8" src="{{asset('public/js/app.js')}}" ></script>
-
+    <script charset="utf-8" src="{{asset('public/js/selectize.min.js')}}" ></script>
+    <script charset="utf-8" src="{{asset('public/js/custom.js')}}" ></script>
     @stack('script')
 </body>
 </html>

@@ -39,7 +39,7 @@
     </div>
 @endsection
 
-@include('shared.modal_frame')
+@include('partial.modal_frame')
 
 @push('script')
 <script type="text/javascript">

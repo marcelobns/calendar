@@ -1,0 +1,22 @@
+{
+  "name": "calendar",
+  "description": "",
+  "main": "",
+  "authors": [
+    "marcelobns <marcelobns@live.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/marcelobns/calendar",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.6",
+    "components-font-awesome": "^4.7.0",
+    "selectize": "selectize.js#^0.12.4"
+  }
+}

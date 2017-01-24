@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
         <label for="PlaceName">Nome da Sala</label>
-        <?=Form::text("place[name]", $place->name, ["id"=>"PlaceName", "class"=>"form-control", "required", "autofocus"])?>
+        <?=Form::text("place[name]", $place->name, ["id"=>"PlaceName", "class"=>"form-control uppercase", "required", "autofocus"])?>
     </div>
     <div class="form-group">
         <label for="PlaceColor">Cor</label>

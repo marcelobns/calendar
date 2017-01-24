@@ -1,5 +1,18 @@
-function weekday(day){
-    switch (day) {
+$(function(){
+    uppercase('.uppercase');
+    $('.selectize').selectize();
+    $('.wrapper').fadeIn();
+});
+$('#modal_frame').on('shown.bs.modal', function(e) {
+    uppercase('.uppercase');
+});
+function uppercase(input){
+    $(input).blur(function(e){
+        e.currentTarget.value = e.currentTarget.value.toUpperCase();
+    });
+}
+function weekday(n){
+    switch (n) {
         case 0:
             return "Domingo"
             break;

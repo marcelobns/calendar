@@ -1,8 +1,8 @@
 <div class="modal-header">
+    <h1 class="modal-title" id="myModalLabel"><?= $schedule->dayDisplay ?></h1>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    <h1 class="modal-title text-center" id="myModalLabel"><?= date_format(date_create($schedule["day"]), "d-m-Y")?></h1>
 </div>
 <?=Form::open(['url' => 'schedule/delete', 'id'=>'delete'])?>
     <div class="modal-body">
@@ -14,6 +14,10 @@
             <tr>
                 <td>Local</td>
                 <td><h6><?=$schedule->place->name?><h6></td>
+            </tr>
+            <tr>
+                <td>Reponsável</td>
+                <td><h6><?=$schedule->responsible?><h6></td>
             </tr>
             <tr>
                 <td>Horário</td>

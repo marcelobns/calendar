@@ -1,19 +1,83 @@
-const elixir = require('laravel-elixir');
+var host = "localhost/calendar";
+var gulp = require('gulp');
+var run = require('gulp-run')
+var merge = require('merge-stream');
+var browserSync = require('browser-sync').create();
+var reload = browserSync.reload;
 
-require('laravel-elixir-vue-2');
+var mainBowerFiles = require('main-bower-files');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
+gulp.task('server', function () {
+    browserSync.init({
+        proxy: host,
+        open: false,
+        reloadOnRestart: true,
+        notify: false,
+        ghostMode: {
+            clicks: true,
+            forms: true,
+            scroll: false
+        },
+    });
+    gulp.watch(["public/**", "app/**", "resources/**", "routes/**"]).on("change", reload);
+});
+gulp.task('bower', ['bower-install'], function(){
+    var css = gulp.src(mainBowerFiles({
+            overrides: {
+                "jquery": {ignore : true},
+                "tether": {
+                    main: ['./dist/css/tether.min.css']
+                },
+                "bootstrap": {
+                    main: ['./dist/css/bootstrap.min.*']
+                },
+                "components-font-awesome" : {
+                    main: ['./css/font-awesome.min.*']
+                },
+                "selectize" : {
+                    main: ['./css/selectize.css']
+                }
+            }
+        }))
+    .pipe(gulp.dest('public/css'));
 
-elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    var js = gulp.src(mainBowerFiles({
+            overrides: {
+                "jquery": {
+                    main : ['./dist/jquery.min.js']
+                },
+                "tether": {
+                    main: ['./dist/js/tether.min.js']
+                },
+                "bootstrap": {
+                    main: ['./dist/js/bootstrap.min.js']
+                },
+                "components-font-awesome" : {ignore: true},
+                "selectize" : {
+                    main: ['./js/standalone/selectize.min.js']
+                }
+            }
+        }))
+    .pipe(gulp.dest('public/js'));
+
+    var fonts = gulp.src(mainBowerFiles({
+            overrides: {
+                "jquery": {ignore: true},
+                "tether": {ignore: true},
+                "bootstrap": {ignore: true},
+                "components-font-awesome" : {
+                    main: [
+                        './fonts/fontawesome-webfont.woff',
+                        './fonts/fontawesome-webfont.woff2',
+                    ]
+                },
+                "selectize": {ignore: true},
+            }
+        }))
+    .pipe(gulp.dest('public/fonts'));
+
+    return merge(css, js, fonts);
+});
+gulp.task('bower-install', function() {
+  return run('bower install').exec();
 });
