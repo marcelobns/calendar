@@ -63,8 +63,7 @@
                 var hourEnd = $('#ScheduleHourEnd').val();
                 var url = "{{url("schedule/check")}}/" + placeId +"/"+ dayStart +"/"+ dayEnd +"/"+ hourStart +"/"+ hourEnd;
 
-                $.ajax(url).done(function(result){
-                    result = JSON.parse(result);
+                $.ajax(url).done(function(result){                    
                     if (result.length == 0) {
                         $("#add").submit();
                     } else {

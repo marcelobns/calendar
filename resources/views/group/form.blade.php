@@ -1,19 +1,19 @@
-<?=Form::open(['action' => 'GroupController@save'])?>
+{{Form::model($model, ['action' => 'GroupController@save'])}}
 <div class="modal-header">
+    <h1 class="modal-title text-center">Bloco</h1>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    <h1 class="modal-title text-center" id="myModalLabel"></h1>
 </div>
 <div class="modal-body">
-    <input type="hidden" name="group[id]" value="{{$group->id}}">
     <div class="form-group">
         <label for="GroupName">Nome</label>
-        <input type="text" id="GroupName" class="form-control" name="group[name]" value="{{$group->name}}" required>
+        {{Form::hidden('group[id]', null)}}
+        {{Form::text('group[name]', null, ['class'=>'form-control', 'required'])}}
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
     <button type="submit" class="btn btn-outline-primary">SALVAR</button>
 </div>
-<?=Form::close()?>
+{{Form::close()}}

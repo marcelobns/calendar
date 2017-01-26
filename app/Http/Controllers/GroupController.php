@@ -4,27 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Group;
 
 class GroupController extends AppController {
     public function __construct() {
         $this->middleware('auth');
     }
     public function index(){
-        $view['groups'] = \App\Group::orderBy('id', 'desc')->get();
+        $view['groups'] = Group::orderBy('id', 'desc')->get();
         return view('group.index', $view);
     }
     public function form($id = null){
-        $view['group'] = \App\Group::firstOrNew(['id' => $id]);
+        $view['model']['group'] = Group::firstOrNew(['id' => $id]);
         return view('group.form', $view);
     }
-    public function save(){
-        $group = \App\Group::updateOrCreate(
-            ['id' => $_POST['group']['id']],
-            $_POST['group']
+    public function save(Request $request){
+        $group = Group::updateOrCreate(
+            ['id' => $request->input('group.id')],
+            $request->input('group')
         );
-        return redirect("dashboard/groups");
+        return redirect($_SERVER['HTTP_REFERER']);
     }
-    public function delete(){
+    public function delete(Request $request){
 
     }
 }

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container index">
         <h2>Blocos</h2>
-        <table class="table table-hover">
+        <table class="table table-hover table-sm">
             <thead>
                 <tr>
                     <th>#</th>
@@ -13,15 +13,11 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $month = date('Y-m'); ?>
                 @foreach ($groups as $i => $group)
                     <tr>
                         <td contenteditable="true">{{$group->id}}</td>
                         <td>{{$group->name}}</td>
                         <td class="text-center">
-                            <a href="{{url("dashboard/$month/{$group->id}")}}" class="btn btn-outline-info btn-sm" title="Calendário">
-                                <i class="fa fa-calendar"></i>
-                            </a>
                             <a href="{{url("group/{$group->id}")}}" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#modal_frame" title="Editar">
                                 <i class="fa fa-pencil"></i>
                             </a>

@@ -12,7 +12,7 @@ class Schedule extends AppModel {
         return $this->BelongsTo('App\Place');
     }
     public function scopeJoinPlace($query) {
-        $query->join('places', 'places.id', '=', 'schedules.place_id');
+        $query->join('places', ['places.id'=>'schedules.place_id']);
     }
     public function getDayDisplayAttribute() {
         return ($this->day != null) ? date('d/m/Y', strtotime($this->day)) : self::getWeekdayName($this->weekday);

@@ -11,8 +11,8 @@ class ScheduleController extends AppController {
     public function __construct() {
         $this->middleware('auth');
     }
-    public function save(){
-        $schedule = $_POST['schedule'];
+    public function save(Request $request){
+        $schedule = $request->input('schedule');
 
         if(!empty($schedule['extend_date'])){
             $dayStart = date_create($schedule['day']);
@@ -22,27 +22,27 @@ class ScheduleController extends AppController {
             for($i=0; $i <= $interval; $i++) {
                 $save = true;
                 $dayString = date_format($dayAdd, 'Y-m-d');
-                if(date('N', strtotime($dayString)) == 6 && !$_POST['schedule']['sabado']){
+                if(date('N', strtotime($dayString)) == 6 && !$schedule['sabado']){
                     $save = false;
                 }
-                if(date('N', strtotime($dayString)) == 7 && !$_POST['schedule']['domingo']){
+                if(date('N', strtotime($dayString)) == 7 && !$schedule['domingo']){
                     $save = false;
                 }
                 if($save){
                     $schedule = new Schedule();
-                    $schedule->fill($_POST['schedule']);
+                    $schedule->fill($request->input('schedule'));
                     $schedule->day = date_format($dayAdd, 'Y-m-d');
                     $schedule->save();
                 }
                 date_add($dayAdd, date_interval_create_from_date_string("1 days"));
             }
-            return redirect($_POST['referer']);
+            return redirect($request->input('referer'));
         } else {
             $schedule = new Schedule();
-            $schedule->fill($_POST['schedule']);
+            $schedule->fill($request->input('schedule'));
 
             if($schedule->save()){
-                return redirect($_POST['referer']);
+                return redirect($request->input('referer'));
             }
         }
     }
@@ -58,18 +58,18 @@ class ScheduleController extends AppController {
 
         return view('schedule/edit', $view);
     }
-    public function delete(){
-        if(isset($_POST['schedule']['id'])){
-            if(Schedule::where('id', $_POST['schedule']['id'])->delete()){
-                return redirect($_POST['referer']);
+    public function delete(Request $request){
+        $schedule = $request->input('schedule');
+        if(isset($schedule['id'])){
+            if(Schedule::where('id', $schedule['id'])->delete()){
+                return redirect($_SERVER['HTTP_REFERER']);
             }
         }
     }
     public function check($place_id, $dayStart, $dayEnd, $hourStart, $hourEnd){
         $raw = "place_id = $place_id and ((day between '$dayStart' and '$dayEnd') OR weekday  = (DAYOFWEEK('$dayStart')-1) ) AND (	('$hourStart' between hour_start and hour_end) OR ('$hourEnd' between hour_start and hour_end) OR (hour_start between '$hourStart' and '$hourEnd') OR (hour_end between '$hourStart' and '$hourEnd'))";
         $result = Schedule::whereRaw($raw)->get();
-        header('Content-type: application/json');
-        echo json_encode($result);
+        return $result;
     }
     public function add_weekday($place_id = null, $weekday = null){
         $view['schedule']['place_id'] = $place_id;
@@ -79,16 +79,17 @@ class ScheduleController extends AppController {
 
         return view('schedule/add_weekday', $view);
     }
-    public function save_weekday(){
-        $weekday = explode(',', $_POST['schedule']['weekdays']);
+    public function save_weekday(Request $request){
+        $schedule = $request->input('schedule');
+        $weekday = explode(',', $schedule['weekdays']);
         for ($i=0; $i < sizeof($weekday); $i++) {
             if(sizeof($weekday) > 1){
-                $_POST['schedule']['weekday'] = $weekday[$i];
+                $schedule['weekday'] = $weekday[$i];
             }
             $schedule = new Schedule();
-            $schedule->fill($_POST['schedule']);
+            $schedule->fill($schedule);
             $schedule->save();
         }
         return redirect($_SERVER['HTTP_REFERER']);
-    }    
+    }
 }
