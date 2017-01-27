@@ -12,25 +12,25 @@ class ScheduleController extends AppController {
         $this->middleware('auth');
     }
     public function save(Request $request){
-        $schedule = $request->input('schedule');
+        $input = $request->input('schedule');
 
-        if(!empty($schedule['extend_date'])){
-            $dayStart = date_create($schedule['day']);
-            $dayEnd = date_create($schedule['extend_date']);
+        if(!empty($input['extend_date'])){
+            $dayStart = date_create($input['day']);
+            $dayEnd = date_create($input['extend_date']);
             $interval = date_diff($dayStart, $dayEnd)->format('%a');
             $dayAdd = $dayStart;
             for($i=0; $i <= $interval; $i++) {
                 $save = true;
                 $dayString = date_format($dayAdd, 'Y-m-d');
-                if(date('N', strtotime($dayString)) == 6 && !$schedule['sabado']){
+                if(date('N', strtotime($dayString)) == 6 && !$input['sabado']){
                     $save = false;
                 }
-                if(date('N', strtotime($dayString)) == 7 && !$schedule['domingo']){
+                if(date('N', strtotime($dayString)) == 7 && !$input['domingo']){
                     $save = false;
                 }
                 if($save){
                     $schedule = new Schedule();
-                    $schedule->fill($request->input('schedule'));
+                    $schedule->fill($input);
                     $schedule->day = date_format($dayAdd, 'Y-m-d');
                     $schedule->save();
                 }
@@ -39,8 +39,7 @@ class ScheduleController extends AppController {
             return redirect($request->input('referer'));
         } else {
             $schedule = new Schedule();
-            $schedule->fill($request->input('schedule'));
-
+            $schedule->fill($input);
             if($schedule->save()){
                 return redirect($request->input('referer'));
             }
@@ -48,20 +47,21 @@ class ScheduleController extends AppController {
     }
     public function add($day = null, $group = null){
         $view['places'] = Place::where("group_id", $group)->orderBy("name")->pluck('name', 'id');
-        $view['schedule']['day'] = $day;
-        $view['schedule']['group'] = $group;
-        return view('schedule/add', $view);
+        $view['schedule'] = [
+            'day' => $day,
+            'group' => $group
+        ];
+        return view('schedule.add', $view);
     }
     public function edit($id) {
         $view['schedule'] = Schedule::where("id", $id)->first();
         $view['day_name'] = $view['schedule']->day;
-
-        return view('schedule/edit', $view);
+        return view('schedule.edit', $view);
     }
     public function delete(Request $request){
-        $schedule = $request->input('schedule');
-        if(isset($schedule['id'])){
-            if(Schedule::where('id', $schedule['id'])->delete()){
+        $input = $request->input('schedule');
+        if(isset($input['id'])){
+            if(Schedule::where('id', $input['id'])->delete()){
                 return redirect($_SERVER['HTTP_REFERER']);
             }
         }
@@ -72,22 +72,23 @@ class ScheduleController extends AppController {
         return $result;
     }
     public function add_weekday($place_id = null, $weekday = null){
-        $view['schedule']['place_id'] = $place_id;
-        $view['schedule']['weekday'] = $weekday;
-        $view['schedule']['weekday_name'] = Schedule::getWeekdayName($weekday);
-        $view['schedule']['year_seq'] = Schedule::where("day", null)->max('year_seq');
-
-        return view('schedule/add_weekday', $view);
+        $view['schedule'] = [
+            'place_id' => $place_id,
+            'weekday' => $weekday,
+            'weekday_name' => Schedule::getWeekdayName($weekday),
+            'year_seq' => Schedule::where("day", null)->max('year_seq')
+        ];
+        return view('schedule.add_weekday', $view);
     }
     public function save_weekday(Request $request){
-        $schedule = $request->input('schedule');
-        $weekday = explode(',', $schedule['weekdays']);
+        $input = $request->input('schedule');
+        $weekday = explode(',', $input['weekdays']);
         for ($i=0; $i < sizeof($weekday); $i++) {
             if(sizeof($weekday) > 1){
-                $schedule['weekday'] = $weekday[$i];
+                $input['weekday'] = $weekday[$i];
             }
             $schedule = new Schedule();
-            $schedule->fill($schedule);
+            $schedule->fill($input);
             $schedule->save();
         }
         return redirect($_SERVER['HTTP_REFERER']);

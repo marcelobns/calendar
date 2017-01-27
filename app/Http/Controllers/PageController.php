@@ -25,7 +25,7 @@ class PageController extends AppController {
 
             $view['days'] = [];
             for ($i=1-$first_day; $i <= $last_day; $i++) {
-                $view['days'][$month.'-'.str_pad($i, 2, "0", STR_PAD_LEFT)] = array();
+                $view['days'][$month.'-'.str_pad($i, 2, "0", STR_PAD_LEFT)] = [];
             }
             $view['schedules'] = Schedule::Select('schedules.*')->whereRaw("EXTRACT(YEAR_MONTH FROM day) = '$month_raw'")
                                     ->joinPlace()->where('places.group_id','=',$input->group_id)
@@ -35,7 +35,6 @@ class PageController extends AppController {
             }
             $view['prev'] = url("/".date('Y-m', strtotime("-1 month", strtotime($month)))).'?'.http_build_query($input);
             $view['next'] = url("/".date('Y-m', strtotime("+1 month", strtotime($month)))).'?'.http_build_query($input);
-
         }
         else if(@$input->calendar == 'place'){
             $view['place'] = Place::find($input->place_id);
