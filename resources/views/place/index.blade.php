@@ -2,7 +2,7 @@
 @section('content')
     <div class="container index">
         <h2>Salas</h2>
-        <table class="table table-hover table-sm">
+        <table class="table table-hover table-sm table-striped">
             <thead>
                 <tr>
                     <th>#</th>
@@ -21,7 +21,7 @@
                         <td><span class="sala-color" style="background-color:{{$place->color}}"></span></td>
                         <td>{{$place->name}}</td>
                         <td>{{$place->group->name}}</td>
-                        <td class="text-center">                            
+                        <td class="text-center">
                             <a href="{{url("place/{$place->id}")}}" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#modal_frame" title="Editar">
                                 <i class="fa fa-pencil"></i>
                             </a>

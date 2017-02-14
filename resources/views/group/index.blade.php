@@ -2,7 +2,7 @@
 @section('content')
     <div class="container index">
         <h2>Blocos</h2>
-        <table class="table table-hover table-sm">
+        <table class="table table-hover table-sm table-striped">
             <thead>
                 <tr>
                     <th>#</th>
@@ -15,7 +15,7 @@
             <tbody>
                 @foreach ($groups as $i => $group)
                     <tr>
-                        <td contenteditable="true">{{$group->id}}</td>
+                        <td>{{$group->id}}</td>
                         <td>{{$group->name}}</td>
                         <td class="text-center">
                             <a href="{{url("group/{$group->id}")}}" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#modal_frame" title="Editar">

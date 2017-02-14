@@ -2,7 +2,7 @@
 @section('content')
     <div class="container index">
         <h2>Usuários</h2>
-        <table class="table">
+        <table class="table table-sm table-hover table-striped">
             <thead>
                 <tr>
                     <th>#</th>
